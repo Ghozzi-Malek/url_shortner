@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>URL Shortener</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap"
+        rel="stylesheet"
+    />
+    <style>
+        :root {
+            --bg-top: #f7efe2;
+            --bg-bottom: #dfecfa;
+            --card-bg: rgba(255, 255, 255, 0.88);
+            --text-main: #1f2937;
+            --text-muted: #5b6470;
+            --accent: #0f766e;
+            --accent-hover: #115e59;
+            --border: #cfd8e3;
+            --focus: #0ea5e9;
+            --shadow: 0 18px 45px rgba(31, 41, 55, 0.16);
+            --radius: 18px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: "Space Grotesk", sans-serif;
+            color: var(--text-main);
+            background: radial-gradient(circle at 15% 20%, #fff6d8 0%, transparent 45%),
+                        radial-gradient(circle at 85% 10%, #d6eef5 0%, transparent 40%),
+                        linear-gradient(135deg, var(--bg-top), var(--bg-bottom));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 660px;
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.75);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(8px);
+            padding: 30px 24px;
+            animation: reveal 450ms ease-out;
+        }
+
+        h1 {
+            margin: 0 0 8px;
+            font-size: clamp(1.7rem, 3.4vw, 2.2rem);
+            letter-spacing: 0.02em;
+        }
+
+        p {
+            margin: 0 0 24px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .field-group {
+            display: grid;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        input {
+            width: 100%;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 12px 14px;
+            font: inherit;
+            color: inherit;
+            background: #fbfdff;
+            transition: border-color 150ms ease, box-shadow 150ms ease;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--focus);
+            box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.2);
+        }
+
+        #short-url {
+            background: #f4f8fb;
+        }
+
+        button {
+            appearance: none;
+            border: none;
+            border-radius: 999px;
+            background: var(--accent);
+            color: #ffffff;
+            font: inherit;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            padding: 12px 26px;
+            cursor: pointer;
+            transition: transform 120ms ease, background-color 120ms ease;
+        }
+
+        button:hover {
+            background: var(--accent-hover);
+            transform: translateY(-1px);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        @media (max-width: 640px) {
+            .card {
+                padding: 24px 18px;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+
+        @keyframes reveal {
+            from {
+                opacity: 0;
+                transform: translateY(10px) scale(0.99);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="card">
+        <h1>URL Shortener</h1>
+        <p>Paste a long link, click generate, and get your short URL below.</p>
+
+        <div class="field-group">
+            <div>
+                <label for="original-url">Original URL</label>
+                <input
+                    id="original-url"
+                    name="original-url"
+                    type="url"
+                    placeholder="https://example.com/very/long/link"
+                />
+            </div>
+
+            <div>
+                <label for="short-url">Short URL</label>
+                <input
+                    id="short-url"
+                    name="short-url"
+                    type="text"
+                    placeholder="https://short.ly/abcd12"
+                    readonly
+                />
+            </div>
+        </div>
+
+        <button type="button">Generate</button>
+    </main>
+</body>
+</html>
