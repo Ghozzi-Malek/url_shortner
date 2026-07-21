@@ -106,7 +106,14 @@
 
                 <div>
                     <label for="short-url">Short URL</label>
-                    <input id="short-url" name="link" type="text" th:value="${link}" placeholder="https://short.ly/abcd12" readonly />
+                    <div th:if="${link == null}">
+                        <input id="short-url" name="link" type="text"   placeholder="https://short.ly/abcd12" readonly />
+
+                    </div>
+                    <div th:unless="${link == null}">
+                        <input id="short-url" name="link" type="text" th:value="'mybit.ly/' + ${link}" placeholder="https://short.ly/abcd12" readonly />
+
+                    </div>
                 </div>
             </div>
 
