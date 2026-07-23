@@ -22,9 +22,9 @@ public class Link {
     private @Getter @Setter Long id;
 
     @Column(name = "long_form")
-    private @Getter @Setter String long_form;
+    private @Getter @Setter String longForm;
     @Column(name = "short_form")
-    private @Getter @Setter String short_form;
+    private @Getter @Setter String shortForm;
     @Column(name = "prefix")
     private @Getter @Setter String prefix;
     @Column(name = "duration")
