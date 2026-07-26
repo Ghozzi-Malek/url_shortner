@@ -4,6 +4,7 @@ import com.example.demo.entities.Link;
 import com.example.demo.repository.LinkRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -51,7 +52,8 @@ public class linksController {
         return "index";
     }
 
-    @GetMapping("/{link}")
+    @GetMapping("/link/{link}")
+    @Cacheable("links")
     public String redirectToExternal(@PathVariable String link) {
         Optional<Link> storedLink = linkRepository.findByShortForm(link);
         if (storedLink.isEmpty()) {
